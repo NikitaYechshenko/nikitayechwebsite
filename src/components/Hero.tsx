@@ -31,10 +31,13 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
           <div className="flex items-center gap-4 mb-6">
             <div className="lg:hidden w-16 h-16 rounded-xl overflow-hidden border border-primary/30 bg-surface-container-low shrink-0 shadow-lg">
               <img 
-                alt="Nikita Avatar" 
+                alt="Nikita Backend DevOps Engineer Avatar" 
                 className="w-full h-full object-cover" 
                 src="https://lh3.googleusercontent.com/aida/ADBb0uiOPgRjiQvE594aWwHCG3zmm_7u0YQDP8D4IP4KSHOLSJVB412_wIRtgH_ErgelAY_8NcI-OtrEYUI1x7WU3xJqDrU0ypkpeCTVNElnwn9kuNotIN9-jjmDqxEnLe6gBzgP5qn_vNkSapEnAjIzwTwW9YTYitHldWqWcfaCmPMAixuBqlpLDyaoGb7nEvxVjLPyI0jlf6aCD6zgtwHma4WY2MMcWAaagFQ_UwJ43nK4v8MMd82gGcZWwLKag4p11HnaKK-p88pi"
                 referrerPolicy="no-referrer"
+                width={64}
+                height={64}
+                loading="eager"
               />
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant/30 rounded">
@@ -89,10 +92,13 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
             <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
             <div className="relative z-10 w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden border border-primary/30 bg-surface-container-low p-3 shadow-2xl">
               <img 
-                alt="Pixel art avatar of Nikita" 
+                alt="Nikita Backend DevOps Engineer - Pixel Art Avatar" 
                 className="w-full h-full object-cover rounded-xl" 
                 src="https://lh3.googleusercontent.com/aida/ADBb0uiOPgRjiQvE594aWwHCG3zmm_7u0YQDP8D4IP4KSHOLSJVB412_wIRtgH_ErgelAY_8NcI-OtrEYUI1x7WU3xJqDrU0ypkpeCTVNElnwn9kuNotIN9-jjmDqxEnLe6gBzgP5qn_vNkSapEnAjIzwTwW9YTYitHldWqWcfaCmPMAixuBqlpLDyaoGb7nEvxVjLPyI0jlf6aCD6zgtwHma4WY2MMcWAaagFQ_UwJ43nK4v8MMd82gGcZWwLKag4p11HnaKK-p88pi"
                 referrerPolicy="no-referrer"
+                width={420}
+                height={420}
+                loading="eager"
               />
               <div className="absolute bottom-6 right-6 flex flex-col gap-1 items-end font-mono text-[10px] text-primary/70 bg-black/40 backdrop-blur-md p-2 rounded">
                 <span>ID: {sessionId}</span>

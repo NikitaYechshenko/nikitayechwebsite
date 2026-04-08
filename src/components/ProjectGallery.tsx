@@ -118,9 +118,12 @@ export default function ProjectGallery() {
             <div className="absolute inset-0">
               <img 
                 src={project.image} 
-                alt={project.title}
+                alt={`${project.title} - ${project.tag} project by Nikita`}
                 className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
                 referrerPolicy="no-referrer"
+                width={400}
+                height={300}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
             </div>

@@ -70,12 +70,13 @@ export default function Footer() {
             email: nikitayech | telegram: @nikitayech
           </div>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-6 md:gap-8 flex-wrap justify-center">
           {links.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-on-surface-variant hover:text-primary transition-colors hover:translate-y-[-2px]"
+              aria-label={`Visit Nikita's ${link.name}`}
+              className="text-on-surface-variant hover:text-primary transition-colors hover:translate-y-[-2px] py-2"
             >
               {link.name}
             </a>
