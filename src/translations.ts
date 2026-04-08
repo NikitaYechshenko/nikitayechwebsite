@@ -9,8 +9,8 @@ export const translations = {
   ru: {
     nav: {
       services: "Услуги",
-      stack: "Стек",
-      about: "Обо мне",
+      stack: "Проекты",
+      about: "Мой подход",
       contacts: "Контакты",
       status: "System: Online",
     },
@@ -20,7 +20,7 @@ export const translations = {
       bullet1: "Единая точка ответственности",
       bullet2: "Логика, деплой и WAF-защита",
       bullet3: "Настройка «под ключ» с гарантией работы",
-      contactBtn: "Обсудить проект (TG)",
+      contactBtn: "Обсудить проект",
       resumeBtn: "Посмотреть CV (DevOps)",
     },
     services: {
@@ -88,8 +88,8 @@ export const translations = {
   en: {
     nav: {
       services: "Services",
-      stack: "Stack",
-      about: "About",
+      stack: "Projects",
+      about: "My Approach",
       contacts: "Contacts",
       status: "System: Online",
     },
