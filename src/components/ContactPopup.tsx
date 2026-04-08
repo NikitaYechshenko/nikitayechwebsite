@@ -16,10 +16,10 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
   const { t } = useLanguage();
 
   const socials = [
-    { name: "Telegram", icon: <Send className="w-6 h-6" />, href: "#", color: "hover:text-[#229ED9]" },
-    { name: "WhatsApp", icon: <MessageCircle className="w-6 h-6" />, href: "#", color: "hover:text-[#25D366]" },
-    { name: "Email", icon: <Mail className="w-6 h-6" />, href: "mailto:contact@nikita.dev", color: "hover:text-primary" },
-    { name: "GitHub", icon: <Github className="w-6 h-6" />, href: "#", color: "hover:text-white" },
+    { name: "Telegram", icon: <Send className="w-6 h-6" />, href: "https://t.me/nikitayech", color: "hover:text-[#229ED9]" },
+    { name: "WhatsApp", icon: <MessageCircle className="w-6 h-6" />, href: "https://wa.me/77078306593", color: "hover:text-[#25D366]" },
+    { name: "Email", icon: <Mail className="w-6 h-6" />, href: "mailto:nikitayech@gmail.com", color: "hover:text-primary" },
+    { name: "GitHub", icon: <Github className="w-6 h-6" />, href: "https://github.com/NikitaYechshenko", color: "hover:text-white" },
   ];
 
   return (
