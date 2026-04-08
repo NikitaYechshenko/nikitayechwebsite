@@ -28,7 +28,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
               />
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant/30 rounded">
-              <span className="text-secondary text-xs font-mono">sys_init: successful</span>
+              <span className="text-secondary text-xs font-mono">deployd: successful</span>
             </div>
           </div>
           

@@ -3,12 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion } from "motion/react";
-import { Zap, BarChart3, Cpu } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Zap, BarChart3, Cpu, ChevronDown } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Services() {
   const { t } = useLanguage();
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const services = [
     {
@@ -54,7 +56,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="py-32 px-8 bg-surface-container-low" id="services">
+    <section className="py-32 px-6 md:px-8 bg-surface-container-low" id="services">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -74,16 +76,70 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className={`${service.className} p-8 rounded-lg tech-card group flex flex-col justify-between`}
+              className={`${service.className} tech-card group flex flex-col overflow-hidden`}
             >
-              <div>
+              {/* Mobile Header / Toggle */}
+              <button 
+                onClick={() => setExpandedId(expandedId === service.id ? null : service.id)}
+                className="md:hidden w-full p-6 flex items-center justify-between text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="scale-75 origin-left">
+                    {service.icon}
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] text-on-surface-variant block mb-1">{service.id}</span>
+                    <h3 className="text-lg font-bold leading-tight">{service.title}</h3>
+                  </div>
+                </div>
+                <ChevronDown className={`w-5 h-5 text-primary transition-transform duration-300 ${expandedId === service.id ? "rotate-180" : ""}`} />
+              </button>
+
+              {/* Desktop Header */}
+              <div className="hidden md:block p-8 pb-0">
                 <div className="flex justify-between items-start mb-8">
                   {service.icon}
                   <span className="font-mono text-[10px] text-on-surface-variant">{service.id}</span>
                 </div>
                 <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
                 <p className="text-primary text-sm font-medium mb-6">{service.subtitle}</p>
-                
+              </div>
+
+              {/* Content (Toggleable on mobile, always visible on desktop) */}
+              <AnimatePresence initial={false}>
+                {(expandedId === service.id || typeof window !== 'undefined' && window.innerWidth >= 768) && (
+                  <motion.div
+                    initial={typeof window !== 'undefined' && window.innerWidth < 768 ? { height: 0, opacity: 0 } : false}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="md:!h-auto md:!opacity-100 overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 md:px-8 md:pb-8">
+                      <p className="md:hidden text-primary text-xs font-medium mb-4">{service.subtitle}</p>
+                      <ul className="space-y-4 text-on-surface-variant text-sm mb-8">
+                        {service.points.map((point, pIdx) => (
+                          <li key={pIdx} className="flex gap-3">
+                            <span className="w-1 h-1 bg-primary mt-2 shrink-0"></span>
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-wrap gap-2">
+                        {service.tags.map((tag) => (
+                          <span key={tag} className="px-3 py-1 bg-background/50 rounded border border-outline-variant/30 text-[10px] font-mono text-on-surface-variant">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              
+              {/* Fallback for desktop if JS innerWidth check is tricky in SSR/initial render */}
+              <div className="hidden md:block p-8 pt-0">
                 <ul className="space-y-4 text-on-surface-variant text-sm mb-8">
                   {service.points.map((point, pIdx) => (
                     <li key={pIdx} className="flex gap-3">
@@ -92,14 +148,14 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              <div className="flex flex-wrap gap-2">
-                {service.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 bg-background/50 rounded border border-outline-variant/30 text-[10px] font-mono text-on-surface-variant">
-                    {tag}
-                  </span>
-                ))}
+                <div className="flex flex-wrap gap-2">
+                  {service.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-background/50 rounded border border-outline-variant/30 text-[10px] font-mono text-on-surface-variant">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
