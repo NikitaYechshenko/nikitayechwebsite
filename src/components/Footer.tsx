@@ -3,7 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useLanguage } from "../context/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLanguage();
+
   const links = [
     { name: "Telegram", href: "#" },
     { name: "WhatsApp", href: "#" },
@@ -18,7 +22,7 @@ export default function Footer() {
           Nikita.Dev
         </div>
         <div className="text-on-surface-variant">
-          © {new Date().getFullYear()} Nikita.Dev | Engineered for Performance
+          © {new Date().getFullYear()} Nikita.Dev | {t.footer.rights}
         </div>
         <div className="flex gap-8">
           {links.map((link) => (

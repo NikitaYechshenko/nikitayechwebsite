@@ -5,6 +5,7 @@
 
 import { motion } from "motion/react";
 import { Code, Database, Cloud } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 const stack = [
   {
@@ -37,6 +38,8 @@ const stack = [
 ];
 
 export default function TechStack() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-32 px-8" id="stack">
       <div className="max-w-7xl mx-auto">
@@ -46,8 +49,8 @@ export default function TechStack() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Stack</h2>
-            <p className="text-on-surface-variant">Curated toolset for high-availability systems</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.stack.title}</h2>
+            <p className="text-on-surface-variant">{t.stack.subtitle}</p>
           </motion.div>
           <div className="text-right font-mono text-xs text-primary">v3.12.0_stable</div>
         </div>
