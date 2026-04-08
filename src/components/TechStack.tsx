@@ -13,8 +13,8 @@ const stack = [
     icon: <Code className="w-4 h-4" />,
     items: [
       { name: "Python 3.12+", level: "Expert", levelColor: "bg-primary/10 text-primary" },
-      { name: "FastAPI", level: "Advanced", levelColor: "bg-surface-variant text-on-surface-variant" },
-      { name: "Django Ninja", level: "Advanced", levelColor: "bg-surface-variant text-on-surface-variant" },
+      { name: "FastAPI / Django", level: "Advanced", levelColor: "bg-surface-variant text-on-surface-variant" },
+      { name: "React / Next.js", level: "Fast-track UI", levelColor: "bg-primary/10 text-primary" },
     ],
   },
   {
@@ -27,12 +27,12 @@ const stack = [
     ],
   },
   {
-    title: "Infrastructure",
+    title: "Infrastructure & DevOps",
     icon: <Cloud className="w-4 h-4" />,
     items: [
-      { name: "Docker / Compose", level: "Containerization", levelColor: "bg-surface-variant text-on-surface-variant" },
-      { name: "Azure / GCP", level: "Cloud", levelColor: "bg-surface-variant text-on-surface-variant" },
-      { name: "CI/CD Pipelines", level: "Automation", levelColor: "bg-surface-variant text-on-surface-variant" },
+      { name: "Docker / K8s", level: "Containers", levelColor: "bg-surface-variant text-on-surface-variant" },
+      { name: "Ansible / Terraform", level: "IaC", levelColor: "bg-primary/10 text-primary" },
+      { name: "Prometheus / Grafana", level: "Monitoring", levelColor: "bg-surface-variant text-on-surface-variant" },
     ],
   },
 ];

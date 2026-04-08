@@ -108,6 +108,9 @@ export default function Services() {
                   className="md:!h-auto md:!opacity-100 overflow-hidden"
                 >
                   <div className="px-6 pb-6 md:px-8 md:pb-8">
+                    <div className="mb-6 p-3 bg-primary/5 border-l-2 border-primary text-[11px] text-on-surface-variant italic">
+                      {t.services.fastWeb.fixedPrice}
+                    </div>
                     <ul className="space-y-6">
                       {services[0].points?.map((point, pIdx) => (
                         <li key={pIdx} className="flex gap-4">
@@ -120,6 +123,9 @@ export default function Services() {
                         </li>
                       ))}
                     </ul>
+                    <div className="mt-6 text-[10px] text-on-surface-variant/50">
+                      {t.services.fastWeb.footnote}
+                    </div>
                   </div>
                 </motion.div>
               )}

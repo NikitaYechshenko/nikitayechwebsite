@@ -4,10 +4,20 @@
  */
 
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Hero({ onContactClick }: { onContactClick: () => void }) {
   const { t } = useLanguage();
+  const [sessionId, setSessionId] = useState("8821-YX");
+
+  useEffect(() => {
+    const randomId = Math.floor(1000 + Math.random() * 9000);
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const randomSuffix = chars[Math.floor(Math.random() * chars.length)] + chars[Math.floor(Math.random() * chars.length)];
+    setSessionId(`${randomId}-${randomSuffix}`);
+  }, []);
 
   return (
     <section className="min-h-screen flex flex-col justify-center px-6 md:px-8 pt-24 pb-12 max-w-7xl mx-auto overflow-hidden relative">
@@ -28,17 +38,33 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
               />
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant/30 rounded">
-              <span className="text-secondary text-xs font-mono">deployd: successful</span>
+              <span className="text-secondary text-xs font-mono">deployed: successful</span>
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-6 bg-gradient-to-r from-on-background to-on-surface-variant bg-clip-text text-transparent">
-            {t.hero.name} — {t.hero.role}
-          </h1>
+          <div className="mb-8">
+            <h1 className="text-2xl md:text-3xl font-mono text-primary/80 mb-2 uppercase tracking-tight">
+              {t.hero.name}
+            </h1>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tighter bg-gradient-to-r from-on-background to-on-surface-variant bg-clip-text text-transparent">
+              {t.hero.role}
+            </h2>
+          </div>
           
-          <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mb-10 leading-relaxed">
-            {t.hero.description}
-          </p>
+          <div className="flex flex-col gap-4 mb-12">
+            {[t.hero.bullet1, t.hero.bullet2, t.hero.bullet3].map((bullet, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 + i * 0.1 }}
+                className="flex items-center gap-3 text-on-surface-variant"
+              >
+                <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                <span className="text-lg md:text-xl font-medium">{bullet}</span>
+              </motion.div>
+            ))}
+          </div>
           
           <div className="flex flex-wrap gap-4">
             <button 
@@ -69,7 +95,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
                 referrerPolicy="no-referrer"
               />
               <div className="absolute bottom-6 right-6 flex flex-col gap-1 items-end font-mono text-[10px] text-primary/70 bg-black/40 backdrop-blur-md p-2 rounded">
-                <span>ID: 8821-YX</span>
+                <span>ID: {sessionId}</span>
                 <span>LOC: HFU, DE</span>
               </div>
             </div>
