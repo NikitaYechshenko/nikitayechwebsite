@@ -13,14 +13,14 @@ const techProjects = [
   {
     title: "Almaty Build Masters",
     tag: "Landing Page",
-    image: "/input_file_0.png",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     link: "#",
     status: "LIVE",
   },
   {
     title: "Loyalty System App",
     tag: "Mobile Web App",
-    image: "/input_file_1.png",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800",
     link: "#",
     status: "STABLE",
   },
@@ -255,7 +255,7 @@ export default function ProjectGallery() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-5xl bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/30 shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
+              className="relative w-full max-w-3xl bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/30 shadow-2xl flex flex-col max-h-[90vh]"
             >
               <button 
                 onClick={() => setSelectedSolution(null)}
@@ -264,53 +264,42 @@ export default function ProjectGallery() {
                 <X className="w-6 h-6" />
               </button>
 
-              {/* Left: Visual */}
-              <div className="md:w-1/2 bg-black/20 relative overflow-y-auto scrollbar-hide">
-                <img 
-                  src={selectedSolution.image}
-                  alt={selectedSolution.title}
-                  className="w-full h-auto object-cover opacity-80"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-              </div>
-
-              {/* Right: Content */}
-              <div className="md:w-1/2 p-8 md:p-12 overflow-y-auto bg-surface-container-low">
-                <div className="mb-8">
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded border border-primary/20 mb-4 inline-block">
+              {/* Content */}
+              <div className="w-full p-6 md:p-8 overflow-y-auto bg-surface-container-low">
+                <div className="mb-6">
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded border border-primary/20 mb-3 inline-block">
                     {selectedSolution.tag}
                   </span>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-3 leading-tight">
                     {selectedSolution.popup.title}
                   </h3>
-                  <p className="text-on-surface-variant text-lg leading-relaxed">
+                  <p className="text-on-surface-variant text-base leading-relaxed">
                     {selectedSolution.popup.summary}
                   </p>
                 </div>
 
-                <div className="space-y-8">
+                <div className="space-y-6">
                   <div>
-                    <h4 className="text-primary font-bold uppercase tracking-widest text-xs mb-4">Что входит в "коробку"</h4>
-                    <ul className="space-y-4">
+                    <h4 className="text-primary font-bold uppercase tracking-widest text-[10px] mb-3">Что входит в "коробку"</h4>
+                    <ul className="space-y-2">
                       {selectedSolution.popup.box.map((item: string, i: number) => (
                         <li key={i} className="flex gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                          <span className="text-on-surface-variant">{item}</span>
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-1" />
+                          <span className="text-on-surface-variant text-sm">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="p-6 bg-primary/5 rounded-xl border border-primary/20">
-                    <h4 className="text-primary font-bold uppercase tracking-widest text-xs mb-2">Главная выгода</h4>
-                    <p className="text-on-surface-variant font-medium">
+                  <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
+                    <h4 className="text-primary font-bold uppercase tracking-widest text-[10px] mb-1">Главная выгода</h4>
+                    <p className="text-on-surface-variant text-sm font-medium">
                       {selectedSolution.popup.benefit}
                     </p>
                   </div>
 
-                  <button className="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-bold rounded-xl hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20 flex items-center justify-center gap-3 text-lg">
-                    <Send className="w-5 h-5" />
+                  <button className="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-bold rounded-xl hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20 flex items-center justify-center gap-3 text-base">
+                    <Send className="w-4 h-4" />
                     {selectedSolution.popup.btn}
                   </button>
                 </div>
