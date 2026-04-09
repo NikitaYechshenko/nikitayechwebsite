@@ -5,25 +5,29 @@
 
 import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
-import { Target, Cpu, ShieldCheck } from "lucide-react";
+import { useViewContext } from "../context/ContextContext";
+import { Target, Cpu, ShieldCheck, Zap, Code2, Lock } from "lucide-react";
 
 export default function About() {
   const { t } = useLanguage();
+  const { viewContext } = useViewContext();
+
+  const content = viewContext === "business" ? t.about.business : t.about.tech;
 
   const cards = [
     {
-      ...t.about.card1,
-      icon: <Target className="w-8 h-8 text-primary" />,
+      ...content.card1,
+      icon: viewContext === "business" ? <Zap className="w-8 h-8 text-primary" /> : <Code2 className="w-8 h-8 text-primary" />,
       delay: 0.1,
     },
     {
-      ...t.about.card2,
-      icon: <Cpu className="w-8 h-8 text-secondary" />,
+      ...content.card2,
+      icon: viewContext === "business" ? <Target className="w-8 h-8 text-secondary" /> : <Cpu className="w-8 h-8 text-secondary" />,
       delay: 0.2,
     },
     {
-      ...t.about.card3,
-      icon: <ShieldCheck className="w-8 h-8 text-primary" />,
+      ...content.card3,
+      icon: viewContext === "business" ? <ShieldCheck className="w-8 h-8 text-primary" /> : <Lock className="w-8 h-8 text-primary" />,
       delay: 0.3,
     },
   ];
@@ -37,7 +41,7 @@ export default function About() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.about.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{content.title}</h2>
           <div className="w-12 h-1 bg-primary"></div>
         </motion.div>
 

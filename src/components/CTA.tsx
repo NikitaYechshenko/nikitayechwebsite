@@ -4,11 +4,13 @@
  */
 
 import { motion } from "motion/react";
-import { Send, FileText } from "lucide-react";
+import { Send, FileText, Github } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useViewContext } from "../context/ContextContext";
 
 export default function CTA({ onContactClick }: { onContactClick: () => void }) {
   const { t } = useLanguage();
+  const { viewContext } = useViewContext();
 
   return (
     <section className="py-32 px-8" id="contacts">
@@ -32,13 +34,17 @@ export default function CTA({ onContactClick }: { onContactClick: () => void }) 
               <Send className="w-5 h-5" />
               {t.cta.startBtn}
             </button>
-            <a 
-              href="#"
-              className="flex items-center justify-center gap-3 px-10 py-5 bg-surface-container-high text-on-surface font-bold rounded hover:bg-surface-container-highest transition-colors border border-outline-variant/30"
-            >
-              <FileText className="w-5 h-5" />
-              {t.cta.cvBtn}
-            </a>
+            {viewContext === "tech" && (
+              <a 
+                href="https://github.com/NikitaYechshenko"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 px-10 py-5 bg-surface-container-high text-on-surface font-bold rounded hover:bg-surface-container-highest transition-colors border border-outline-variant/30"
+              >
+                <Github className="w-5 h-5" />
+                GitHub
+              </a>
+            )}
           </div>
         </motion.div>
       </div>
