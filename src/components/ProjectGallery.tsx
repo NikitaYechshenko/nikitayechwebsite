@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useRef, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useViewContext } from "../context/ContextContext";
-import { ExternalLink, Terminal, ChevronLeft, ChevronRight, Clock, Tag, DollarSign, X, CheckCircle2, Send } from "lucide-react";
+import { ExternalLink, Terminal, ChevronLeft, ChevronRight, Clock, Tag, DollarSign, X, CheckCircle2, Send, Check } from "lucide-react";
 
 const techProjects = [
   {
@@ -116,52 +116,52 @@ export default function ProjectGallery() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               onClick={() => setSelectedSolution(solution)}
-              className="group tech-card p-0 overflow-hidden cursor-pointer flex flex-col h-full hover:border-primary/50 transition-all duration-300"
+              className="group bg-[#1a1a1a] rounded-sm overflow-hidden cursor-pointer flex flex-col h-full border border-white/5 hover:border-primary/20 transition-all duration-300 shadow-2xl"
             >
-              <div className="aspect-video relative overflow-hidden bg-black">
+              <div className="aspect-[4/5] relative overflow-hidden bg-[#2a2a2a]">
                 <img 
                   src={solution.image}
                   alt={solution.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-50 group-hover:opacity-100 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-primary/5 mix-blend-overlay" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-60" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-black/60 backdrop-blur-md text-primary text-[10px] font-bold uppercase tracking-widest rounded border border-primary/30">
+                  <span className="px-2 py-1 bg-black/80 backdrop-blur-md text-primary text-[10px] font-bold uppercase tracking-widest rounded-sm border border-white/10">
                     {solution.tag}
                   </span>
                 </div>
               </div>
               
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
+              <div className="p-6 flex flex-col flex-grow bg-[#1a1a1a]">
+                <h3 className="text-lg font-bold mb-4 text-white leading-tight">
                   {solution.title}
                 </h3>
                 
-                <div className="space-y-3 mt-auto">
-                  <div className="flex items-center gap-2 text-on-surface-variant text-sm">
-                    <Clock className="w-4 h-4 text-primary" />
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center gap-3 text-gray-400 text-[13px]">
+                    <Clock className="w-4 h-4 text-primary/60" />
                     <span>{solution.duration}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-on-surface-variant text-sm">
-                    <Tag className="w-4 h-4 text-primary" />
+                  <div className="flex items-center gap-3 text-gray-400 text-[13px] items-start">
+                    <Check className="w-4 h-4 text-primary/60 shrink-0 mt-0.5" />
                     <span>{solution.feature}</span>
                   </div>
-                  <div className="flex items-center gap-2 pt-2">
-                    {solution.oldPrice && (
-                      <span className="text-on-surface-variant/50 line-through text-sm">
-                        {solution.oldPrice}
-                      </span>
-                    )}
-                    <div className="flex items-center gap-1 text-primary font-bold text-lg">
-                      <DollarSign className="w-5 h-5" />
-                      <span>{solution.price}</span>
-                    </div>
+                </div>
+
+                <div className="mt-auto flex items-center gap-3">
+                  {solution.oldPrice && (
+                    <span className="text-gray-600 line-through text-sm">
+                      {solution.oldPrice}
+                    </span>
+                  )}
+                  <div className="text-primary font-bold text-xl">
+                    {solution.price}
                   </div>
                 </div>
               </div>
               
-              <div className="p-4 bg-surface-container-high border-t border-outline-variant/30 text-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-primary transition-colors">
+              <div className="py-4 bg-[#242e2a] border-t border-white/5 text-center text-[10px] font-bold uppercase tracking-widest text-gray-300 group-hover:bg-[#2d3a33] group-hover:text-primary transition-all">
                 {t.solutions.cta}
               </div>
             </motion.div>

@@ -125,7 +125,7 @@ export const translations = {
           feature: "0$ за хостинг навсегда + базовая SEO",
           oldPrice: "100$",
           price: "60$",
-          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+          image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=1200",
           popup: {
             title: "Идеальный старт для вашего бизнеса в сети.",
             summary: "Я создаю сверхбыстрые сайты, которые не падают от нагрузок и сразу готовы приводить клиентов. Идеально для запуска нового продукта, сферы услуг или тестирования ниши.",
@@ -147,7 +147,7 @@ export const translations = {
           feature: "WAF-защита транзакций и админ-панель",
           oldPrice: "250$",
           price: "200$",
-          image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200",
+          image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200",
           popup: {
             title: "Полноценная торговая площадка для вашего бренда.",
             summary: "Мало просто выложить товары — магазин должен работать без сбоев, безопасно принимать платежи и быть удобным для покупателя. Я собираю надежные e-commerce решения на современном стеке.",
@@ -169,7 +169,7 @@ export const translations = {
           duration: "1 неделя",
           feature: "Бизнес в кармане клиента без установки приложений",
           price: "от 150$",
-          image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=1200",
+          image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=1200",
           popup: {
             title: "Автоматизация и продажи внутри мессенджера.",
             summary: "Превратите Telegram в ваш главный канал продаж и поддержки. Я разрабатываю как классических текстовых ботов, так и современные Mini Apps (полноценные веб-приложения внутри Telegram).",
@@ -318,7 +318,7 @@ export const translations = {
           feature: "$0 hosting forever + basic SEO",
           oldPrice: "100$",
           price: "60$",
-          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+          image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=1200",
           popup: {
             title: "Perfect start for your business online.",
             summary: "I create ultra-fast websites that don't crash under load and are immediately ready to bring in customers. Ideal for launching a new product, service area, or niche testing.",
@@ -340,7 +340,7 @@ export const translations = {
           feature: "WAF transaction protection & Admin panel",
           oldPrice: "250$",
           price: "200$",
-          image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200",
+          image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200",
           popup: {
             title: "A full-fledged marketplace for your brand.",
             summary: "It's not enough to just list products — the store must work without failures, securely accept payments, and be convenient for the buyer. I build reliable e-commerce solutions on a modern stack.",
@@ -361,7 +361,7 @@ export const translations = {
           duration: "1 week",
           feature: "Business in customer's pocket without app installation",
           price: "from 150$",
-          image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=1200",
+          image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=1200",
           popup: {
             title: "Automation and sales inside the messenger.",
             summary: "Turn Telegram into your main sales and support channel. I develop both classic text bots and modern Mini Apps (full-fledged web applications inside Telegram).",
