@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useViewContext } from "../context/ContextContext";
 import { CheckCircle2, Terminal as TerminalIcon, Github, Code2, Database, ShieldCheck } from "lucide-react";
+import myPhoto from "../assets/my_photo.jpg?url";
 
 export default function Hero({ onContactClick }: { onContactClick: () => void }) {
   const { t } = useLanguage();
@@ -37,7 +38,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
               <img 
                 alt="Nikita Backend DevOps Engineer Avatar" 
                 className="w-full h-full object-cover" 
-                src="/my_photo.jpg"
+                src={myPhoto}
                 referrerPolicy="no-referrer"
                 loading="eager"
               />
@@ -113,7 +114,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
             <div className="relative z-10 w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden border border-primary/30 bg-surface-container-low p-3 shadow-2xl">
               <div 
                 className="w-full h-full rounded-xl bg-cover bg-center bg-no-repeat bg-surface-container-highest transition-opacity duration-500"
-                style={{ backgroundImage: `url('/my_photo.jpg')` }}
+                style={{ backgroundImage: `url('${myPhoto}')` }}
                 role="img"
                 aria-label="Nikita Backend DevOps Engineer"
               />
