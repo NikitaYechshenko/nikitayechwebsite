@@ -37,10 +37,8 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
               <img 
                 alt="Nikita Backend DevOps Engineer Avatar" 
                 className="w-full h-full object-cover" 
-                src="https://lh3.googleusercontent.com/aida/ADBb0uiOPgRjiQvE594aWwHCG3zmm_7u0YQDP8D4IP4KSHOLSJVB412_wIRtgH_ErgelAY_8NcI-OtrEYUI1x7WU3xJqDrU0ypkpeCTVNElnwn9kuNotIN9-jjmDqxEnLe6gBzgP5qn_vNkSapEnAjIzwTwW9YTYitHldWqWcfaCmPMAixuBqlpLDyaoGb7nEvxVjLPyI0jlf6aCD6zgtwHma4WY2MMcWAaagFQ_UwJ43nK4v8MMd82gGcZWwLKag4p11HnaKK-p88pi"
+                src="/my_photo.jpg"
                 referrerPolicy="no-referrer"
-                width={64}
-                height={64}
                 loading="eager"
               />
             </div>
@@ -112,57 +110,61 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
           <div className="aspect-square relative flex items-center justify-center">
             <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
             
-            {viewContext === "tech" ? (
-              <div className="relative z-10 w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden border border-primary/30 bg-black/60 p-6 shadow-2xl font-mono text-[10px] text-primary/80">
-                <div className="flex justify-between items-center mb-4 border-b border-primary/20 pb-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-red-500/50" />
-                    <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
-                    <div className="w-2 h-2 rounded-full bg-green-500/50" />
-                  </div>
-                  <span>nikita@dev: ~</span>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex gap-2">
-                    <span className="text-secondary">$</span>
-                    <span>kubectl get pods -n production</span>
-                  </div>
-                  <div className="pl-4 text-on-surface-variant/60">
-                    <div>api-v1-8821-yx   1/1   Running   0   12d</div>
-                    <div>worker-77a2-bc   1/1   Running   0   12d</div>
-                    <div>db-cluster-0     1/1   Running   0   45d</div>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="text-secondary">$</span>
-                    <span>terraform plan</span>
-                  </div>
-                  <div className="pl-4 text-primary/40">
-                    <div>Plan: 2 to add, 0 to change, 0 to destroy.</div>
-                  </div>
-                  <div className="mt-8 pt-8 border-t border-primary/10 flex justify-around opacity-40">
-                    <Code2 className="w-8 h-8" />
-                    <Database className="w-8 h-8" />
-                    <ShieldCheck className="w-8 h-8" />
-                  </div>
-                </div>
+            <div className="relative z-10 w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden border border-primary/30 bg-surface-container-low p-3 shadow-2xl">
+              <div 
+                className="w-full h-full rounded-xl bg-cover bg-center bg-no-repeat bg-surface-container-highest transition-opacity duration-500"
+                style={{ backgroundImage: `url('/my_photo.jpg')` }}
+                role="img"
+                aria-label="Nikita Backend DevOps Engineer"
+              />
+              
+              <AnimatePresence>
+                {viewContext === "tech" && (
+                  <motion.div 
+                    initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                    animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
+                    exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                    className="absolute inset-0 bg-black/60 p-6 font-mono text-[10px] text-primary/80 flex flex-col"
+                  >
+                    <div className="flex justify-between items-center mb-4 border-b border-primary/20 pb-2">
+                      <div className="flex gap-1.5">
+                        <div className="w-2 h-2 rounded-full bg-red-500/50" />
+                        <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
+                        <div className="w-2 h-2 rounded-full bg-green-500/50" />
+                      </div>
+                      <span>nikita@dev: ~</span>
+                    </div>
+                    <div className="space-y-2 overflow-hidden">
+                      <div className="flex gap-2">
+                        <span className="text-secondary">$</span>
+                        <span>kubectl get pods</span>
+                      </div>
+                      <div className="pl-4 text-on-surface-variant/60">
+                        <div>api-v1-8821-yx   1/1   Running</div>
+                        <div>worker-77a2-bc   1/1   Running</div>
+                      </div>
+                      <div className="flex gap-2">
+                        <span className="text-secondary">$</span>
+                        <span>terraform plan</span>
+                      </div>
+                      <div className="pl-4 text-primary/40">
+                        <div>Plan: 2 to add, 0 to destroy.</div>
+                      </div>
+                      <div className="mt-auto pt-4 border-t border-primary/10 flex justify-around opacity-40">
+                        <Code2 className="w-6 h-6" />
+                        <Database className="w-6 h-6" />
+                        <ShieldCheck className="w-6 h-6" />
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <div className="absolute bottom-6 right-6 flex flex-col gap-1 items-end font-mono text-sm text-primary/70 bg-black/40 backdrop-blur-md p-2 rounded z-20">
+                <span>ID: {sessionId}</span>
+                <span>LOC: HFU, DE</span>
               </div>
-            ) : (
-              <div className="relative z-10 w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden border border-primary/30 bg-surface-container-low p-3 shadow-2xl">
-                <img 
-                  alt="Nikita Backend DevOps Engineer - Pixel Art Avatar" 
-                  className="w-full h-full object-cover rounded-xl" 
-                  src="https://lh3.googleusercontent.com/aida/ADBb0uiOPgRjiQvE594aWwHCG3zmm_7u0YQDP8D4IP4KSHOLSJVB412_wIRtgH_ErgelAY_8NcI-OtrEYUI1x7WU3xJqDrU0ypkpeCTVNElnwn9kuNotIN9-jjmDqxEnLe6gBzgP5qn_vNkSapEnAjIzwTwW9YTYitHldWqWcfaCmPMAixuBqlpLDyaoGb7nEvxVjLPyI0jlf6aCD6zgtwHma4WY2MMcWAaagFQ_UwJ43nK4v8MMd82gGcZWwLKag4p11HnaKK-p88pi"
-                  referrerPolicy="no-referrer"
-                  width={420}
-                  height={420}
-                  loading="eager"
-                />
-                <div className="absolute bottom-6 right-6 flex flex-col gap-1 items-end font-mono text-sm text-primary/70 bg-black/40 backdrop-blur-md p-2 rounded">
-                  <span>ID: {sessionId}</span>
-                  <span>LOC: HFU, DE</span>
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         </motion.div>
       </div>
