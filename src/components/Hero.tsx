@@ -37,7 +37,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
               <img 
                 alt="Nikita Backend DevOps Engineer Avatar" 
                 className="w-full h-full object-cover" 
-                src="/my_photo.jpg"
+                src="/my_photo.webp"
                 referrerPolicy="no-referrer"
                 loading="eager"
               />
@@ -113,7 +113,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
             <div className="relative z-10 w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden border border-primary/30 bg-surface-container-low p-3 shadow-2xl">
               <div 
                 className="w-full h-full rounded-xl bg-cover bg-center bg-no-repeat bg-surface-container-highest transition-opacity duration-500"
-                style={{ backgroundImage: `url('/my_photo.jpg')` }}
+                style={{ backgroundImage: `url('/my_photo.webp')` }}
                 role="img"
                 aria-label="Nikita Backend DevOps Engineer"
               />
