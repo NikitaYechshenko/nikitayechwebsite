@@ -20,7 +20,7 @@ export default function CTA({ onContactClick }: { onContactClick: () => void }) 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="inline-block px-4 py-1 bg-primary/10 text-primary border border-primary/20 rounded mb-8 font-mono text-xs uppercase tracking-widest">
+          <div className="inline-block px-4 py-1 bg-primary/10 text-primary border border-primary/20 rounded mb-8 font-mono text-sm uppercase tracking-widest">
             {t.cta.badge}
           </div>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-12">

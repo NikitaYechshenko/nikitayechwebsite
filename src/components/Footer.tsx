@@ -3,33 +3,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect, useState } from "react";
+import { Cat } from "lucide-react";
+import confetti from "canvas-confetti";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Footer() {
   const { t } = useLanguage();
-  const [logs, setLogs] = useState<string[]>([]);
 
-  useEffect(() => {
-    const initialLogs = [
-      "[INFO] Infrastructure status: Stable",
-      "[INFO] Security layers: Active",
-      "[INFO] Ready for new project...",
-    ];
-    setLogs(initialLogs);
-
-    const interval = setInterval(() => {
-      const newLogs = [
-        `[INFO] System heartbeat: ${new Date().toLocaleTimeString()}`,
-        `[INFO] Traffic monitor: 0 threats detected`,
-        `[INFO] Cache hit ratio: 98.4%`,
-        `[INFO] WAF Status: Filtering active`,
-      ];
-      setLogs(prev => [...prev.slice(-2), newLogs[Math.floor(Math.random() * newLogs.length)]]);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const handleCatClick = () => {
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#00ff00', '#ffffff', '#22c55e']
+    });
+  };
 
   const links = [
     { name: "Telegram", href: "https://t.me/nikitayech" },
@@ -40,22 +28,18 @@ export default function Footer() {
 
   return (
     <footer className="w-full border-t border-white/5 bg-surface-container-lowest font-sans text-sm tracking-wide relative overflow-hidden">
-      {/* Terminal Log Window */}
-      <div className="absolute right-4 top-4 hidden xl:block">
-        <div className="bg-black/80 backdrop-blur-md border border-outline-variant/20 rounded p-3 w-64 font-mono text-[10px] shadow-2xl">
-          <div className="flex gap-1.5 mb-2">
-            <div className="w-2 h-2 rounded-full bg-red-500/50" />
-            <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
-            <div className="w-2 h-2 rounded-full bg-green-500/50" />
+      {/* Cat Icon for Confetti */}
+      <div className="absolute right-8 top-8 hidden xl:block">
+        <button
+          onClick={handleCatClick}
+          className="p-3 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-primary/60 hover:text-primary hover:scale-110 hover:rotate-12 transition-all duration-300 shadow-2xl group"
+          title="Click for a surprise!"
+        >
+          <Cat className="w-6 h-6" />
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-primary text-black text-sm font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            MEOW!
           </div>
-          <div className="space-y-1">
-            {logs.map((log, i) => (
-              <div key={i} className="text-primary/70 animate-pulse">
-                {log}
-              </div>
-            ))}
-          </div>
-        </div>
+        </button>
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center px-8 py-12 gap-6 max-w-7xl mx-auto">
@@ -66,7 +50,7 @@ export default function Footer() {
           <div className="text-on-surface-variant">
             © {new Date().getFullYear()} Nikita.Dev | {t.footer.rights}
           </div>
-          <div className="text-[10px] font-mono text-on-surface-variant/60 uppercase tracking-widest">
+          <div className="text-sm font-mono text-on-surface-variant/60 uppercase tracking-widest">
             email: nikitayech | telegram: @nikitayech
           </div>
         </div>

@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useRef, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useViewContext } from "../context/ContextContext";
-import { ExternalLink, Terminal, ChevronLeft, ChevronRight, Clock, Tag, DollarSign, X, CheckCircle2, Send, Check } from "lucide-react";
+import { ExternalLink, Clock, X, CheckCircle2, Send, Check } from "lucide-react";
 
 const techProjects = [
   {
@@ -31,20 +31,6 @@ const techProjects = [
     link: "#",
     status: "PROD-READY",
   },
-  {
-    title: "API Gateway Service",
-    tag: "Architecture",
-    image: "https://images.unsplash.com/photo-1451187530220-4c2363e7ef23?auto=format&fit=crop&q=80&w=800",
-    link: "#",
-    status: "STABLE",
-  },
-  {
-    title: "WAF Protection Layer",
-    tag: "Security",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    link: "#",
-    status: "ACTIVE",
-  },
 ];
 
 export default function ProjectGallery() {
@@ -52,6 +38,8 @@ export default function ProjectGallery() {
   const { viewContext } = useViewContext();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedSolution, setSelectedSolution] = useState<any>(null);
+
+  const businessSolutions = t.solutions.items;
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -63,8 +51,6 @@ export default function ProjectGallery() {
     }
   };
 
-  const businessSolutions = t.solutions.items;
-
   return (
     <section className="py-32 px-6 md:px-8 bg-background overflow-hidden" id="projects">
       <div className="max-w-7xl mx-auto mb-12 flex justify-between items-end">
@@ -73,99 +59,77 @@ export default function ProjectGallery() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             {viewContext === 'business' ? t.solutions.title : t.solutions.techTitle}
           </h2>
           <div className="w-12 h-1 bg-primary"></div>
         </motion.div>
-        
-        {viewContext === 'tech' && (
-          <div className="hidden md:flex items-center gap-6">
-            <div className="flex gap-2 font-mono text-[10px] text-on-surface-variant">
-              <Terminal className="w-3 h-3" />
-              <span>SCROLL_TO_EXPLORE</span>
-            </div>
-            
-            <div className="flex gap-2">
-              <button 
-                onClick={() => scroll('left')}
-                className="p-2 rounded border border-outline-variant/30 hover:border-primary/50 hover:bg-primary/5 transition-all text-on-surface-variant hover:text-primary"
-                aria-label="Scroll Left"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button 
-                onClick={() => scroll('right')}
-                className="p-2 rounded border border-outline-variant/30 hover:border-primary/50 hover:bg-primary/5 transition-all text-on-surface-variant hover:text-primary"
-                aria-label="Scroll Right"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        )}
       </div>
 
       {viewContext === 'business' ? (
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {businessSolutions.map((solution: any, idx: number) => (
-            <motion.div
-              key={solution.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              onClick={() => setSelectedSolution(solution)}
-              className="group bg-[#1a1a1a] rounded-sm overflow-hidden cursor-pointer flex flex-col h-full border border-white/5 hover:border-primary/20 transition-all duration-300 shadow-2xl"
-            >
-              <div className="aspect-[4/5] relative overflow-hidden bg-[#2a2a2a]">
-                <img 
-                  src={solution.image}
-                  alt={solution.title}
-                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-60" />
-                <div className="absolute top-4 left-4">
-                  <span className="px-2 py-1 bg-black/80 backdrop-blur-md text-primary text-[10px] font-bold uppercase tracking-widest rounded-sm border border-white/10">
-                    {solution.tag}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="p-6 flex flex-col flex-grow bg-[#1a1a1a]">
-                <h3 className="text-lg font-bold mb-4 text-white leading-tight">
-                  {solution.title}
-                </h3>
-                
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3 text-gray-400 text-[13px]">
-                    <Clock className="w-4 h-4 text-primary/60" />
-                    <span>{solution.duration}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-400 text-[13px] items-start">
-                    <Check className="w-4 h-4 text-primary/60 shrink-0 mt-0.5" />
-                    <span>{solution.feature}</span>
-                  </div>
-                </div>
-
-                <div className="mt-auto flex items-center gap-3">
-                  {solution.oldPrice && (
-                    <span className="text-gray-600 line-through text-sm">
-                      {solution.oldPrice}
+        <div className="max-w-7xl mx-auto">
+          <div 
+            className="grid md:grid-cols-3 gap-4 md:gap-8"
+          >
+            {businessSolutions.map((solution: any, idx: number) => (
+              <motion.div
+                key={solution.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                onClick={() => setSelectedSolution(solution)}
+                className="group bg-[#1a1a1a] rounded-sm overflow-hidden cursor-pointer flex flex-col h-full border border-white/5 hover:border-primary/20 transition-all duration-300 shadow-2xl"
+              >
+                <div className="aspect-video md:aspect-[4/5] relative overflow-hidden bg-[#2a2a2a]">
+                  <img 
+                    src={solution.image}
+                    alt={solution.title}
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-60" />
+                  <div className="absolute top-3 left-3 md:top-4 md:left-4">
+                    <span className="px-2 py-0.5 md:py-1 bg-black/80 backdrop-blur-md text-primary text-xs md:text-sm font-bold uppercase tracking-widest rounded-sm border border-white/10">
+                      {solution.tag}
                     </span>
-                  )}
-                  <div className="text-primary font-bold text-xl">
-                    {solution.price}
                   </div>
                 </div>
-              </div>
-              
-              <div className="py-4 bg-[#242e2a] border-t border-white/5 text-center text-[10px] font-bold uppercase tracking-widest text-gray-300 group-hover:bg-[#2d3a33] group-hover:text-primary transition-all">
-                {t.solutions.cta}
-              </div>
-            </motion.div>
-          ))}
+                
+                <div className="p-4 md:p-6 flex flex-col flex-grow bg-[#1a1a1a]">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-4 text-white leading-tight">
+                    {solution.title}
+                  </h3>
+                  
+                  <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                    <div className="flex items-center gap-2 md:gap-3 text-gray-400 text-sm md:text-base">
+                      <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary/60" />
+                      <span>{solution.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-2 md:gap-3 text-gray-400 text-sm md:text-base items-start">
+                      <Check className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary/60 shrink-0 mt-0.5" />
+                      <span>{solution.feature}</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto flex items-center gap-2 md:gap-3">
+                    {solution.oldPrice && (
+                      <span className="text-gray-600 line-through text-sm md:text-base">
+                        {solution.oldPrice}
+                      </span>
+                    )}
+                    <div className="text-primary font-bold text-xl md:text-2xl">
+                      {solution.price}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="py-3 md:py-4 bg-[#242e2a] border-t border-white/5 text-center text-xs md:text-sm font-bold uppercase tracking-widest text-gray-300 group-hover:bg-[#2d3a33] group-hover:text-primary transition-all">
+                  {t.solutions.cta}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       ) : (
         <>
@@ -201,17 +165,17 @@ export default function ProjectGallery() {
                 {/* Content Layer */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
                   <div className="flex justify-between items-start">
-                    <span className="px-2 py-1 bg-primary/10 text-primary text-[10px] font-mono rounded border border-primary/20">
+                    <span className="px-2 py-1 bg-primary/10 text-primary text-sm font-mono rounded border border-primary/20">
                       {project.status}
                     </span>
                     <ExternalLink className="w-4 h-4 text-on-surface-variant group-hover:text-primary transition-colors" />
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-mono text-primary uppercase tracking-widest mb-2 block">
+                    <span className="text-sm font-mono text-primary uppercase tracking-widest mb-2 block">
                       {project.tag}
                     </span>
-                    <h3 className="text-xl md:text-2xl font-bold text-on-surface group-hover:translate-x-1 transition-transform">
+                    <h3 className="text-2xl md:text-3xl font-bold text-on-surface group-hover:translate-x-1 transition-transform">
                       {project.title}
                     </h3>
                   </div>
@@ -267,33 +231,33 @@ export default function ProjectGallery() {
               {/* Content */}
               <div className="w-full p-6 md:p-8 overflow-y-auto bg-surface-container-low">
                 <div className="mb-6">
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded border border-primary/20 mb-3 inline-block">
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-bold uppercase tracking-widest rounded border border-primary/20 mb-3 inline-block">
                     {selectedSolution.tag}
                   </span>
                   <h3 className="text-2xl md:text-3xl font-bold mb-3 leading-tight">
                     {selectedSolution.popup.title}
                   </h3>
-                  <p className="text-on-surface-variant text-base leading-relaxed">
+                  <p className="text-on-surface-variant text-lg leading-relaxed">
                     {selectedSolution.popup.summary}
                   </p>
                 </div>
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-primary font-bold uppercase tracking-widest text-[10px] mb-3">Что входит в "коробку"</h4>
+                    <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-3">Что входит в "коробку"</h4>
                     <ul className="space-y-2">
                       {selectedSolution.popup.box.map((item: string, i: number) => (
                         <li key={i} className="flex gap-3">
                           <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-1" />
-                          <span className="text-on-surface-variant text-sm">{item}</span>
+                          <span className="text-on-surface-variant text-base">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
-                    <h4 className="text-primary font-bold uppercase tracking-widest text-[10px] mb-1">Главная выгода</h4>
-                    <p className="text-on-surface-variant text-sm font-medium">
+                    <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-1">Главная выгода</h4>
+                    <p className="text-on-surface-variant text-base font-medium">
                       {selectedSolution.popup.benefit}
                     </p>
                   </div>

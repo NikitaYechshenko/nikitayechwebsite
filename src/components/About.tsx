@@ -41,7 +41,7 @@ export default function About() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{content.title}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">{content.title}</h2>
           <div className="w-12 h-1 bg-primary"></div>
         </motion.div>
 
@@ -58,13 +58,13 @@ export default function About() {
               <div className="mb-6 p-4 rounded-xl bg-surface-container-high w-fit group-hover:scale-110 transition-transform duration-300">
                 {card.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-on-surface">
+              <h3 className="text-2xl font-bold mb-3 text-on-surface">
                 {card.title}
               </h3>
-              <p className="text-primary font-medium text-sm mb-4 leading-snug">
+              <p className="text-primary font-medium text-base mb-4 leading-snug">
                 {card.subtitle}
               </p>
-              <p className="text-on-surface-variant text-sm leading-relaxed mt-auto">
+              <p className="text-on-surface-variant text-base leading-relaxed mt-auto">
                 {card.details}
               </p>
             </motion.div>

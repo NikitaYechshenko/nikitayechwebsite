@@ -48,8 +48,8 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
             </button>
 
             <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold mb-2">{t.popup.title}</h3>
-              <p className="text-on-surface-variant">{t.popup.subtitle}</p>
+              <h3 className="text-4xl font-bold mb-2">{t.popup.title}</h3>
+              <p className="text-on-surface-variant text-lg">{t.popup.subtitle}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">

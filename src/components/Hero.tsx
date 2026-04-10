@@ -60,7 +60,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
               transition={{ duration: 0.3 }}
             >
               <div className="mb-8">
-                <h1 className="text-2xl md:text-3xl font-mono text-primary/80 mb-2 uppercase tracking-tight">
+                <h1 className="text-3xl md:text-4xl font-mono text-primary/80 mb-2 uppercase tracking-tight">
                   {content.name}
                 </h1>
                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tighter bg-gradient-to-r from-on-background to-on-surface-variant bg-clip-text text-transparent">
@@ -75,7 +75,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
                     className="flex items-center gap-3 text-on-surface-variant"
                   >
                     <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                    <span className="text-lg md:text-xl font-medium">{bullet}</span>
+                    <span className="text-xl md:text-2xl font-medium">{bullet}</span>
                   </div>
                 ))}
               </div>
@@ -157,7 +157,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
                   height={420}
                   loading="eager"
                 />
-                <div className="absolute bottom-6 right-6 flex flex-col gap-1 items-end font-mono text-[10px] text-primary/70 bg-black/40 backdrop-blur-md p-2 rounded">
+                <div className="absolute bottom-6 right-6 flex flex-col gap-1 items-end font-mono text-sm text-primary/70 bg-black/40 backdrop-blur-md p-2 rounded">
                   <span>ID: {sessionId}</span>
                   <span>LOC: HFU, DE</span>
                 </div>

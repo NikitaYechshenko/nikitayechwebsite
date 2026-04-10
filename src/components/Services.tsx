@@ -28,7 +28,7 @@ export default function Services() {
         { text: content.fastWeb.p3, icon: <ShieldCheck className="w-4 h-4 text-primary" /> },
         { text: content.fastWeb.p4, icon: <BarChart3 className="w-4 h-4 text-primary" /> },
       ],
-      className: "md:col-span-5",
+      className: "md:col-span-7",
     },
     {
       id: "CORE-TECH",
@@ -41,7 +41,7 @@ export default function Services() {
         { text: content.core.p3, icon: <Layers className="w-4 h-4 text-secondary" /> },
         { text: content.core.p4, icon: <Workflow className="w-4 h-4 text-secondary" /> },
       ],
-      className: "md:col-span-7",
+      className: "md:col-span-5",
     },
   ];
 
@@ -54,7 +54,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.services.title}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.services.title}</h2>
           <div className="w-12 h-1 bg-primary"></div>
         </motion.div>
 
@@ -78,8 +78,8 @@ export default function Services() {
                     {service.icon}
                   </div>
                   <div>
-                    <span className="font-mono text-[10px] text-on-surface-variant block mb-1">{service.id}</span>
-                    <h3 className="text-lg font-bold leading-tight">{service.title}</h3>
+                    <span className="font-mono text-sm text-on-surface-variant block mb-1">{service.id}</span>
+                    <h3 className="text-xl font-bold leading-tight">{service.title}</h3>
                   </div>
                 </div>
                 <ChevronDown className={`w-5 h-5 text-primary transition-transform duration-300 ${expandedId === service.id ? "rotate-180" : ""}`} />
@@ -89,12 +89,12 @@ export default function Services() {
               <div className="hidden md:block p-8 pb-4">
                 <div className="flex justify-between items-start mb-8">
                   {service.icon}
-                  <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+                  <span className="font-mono text-sm text-on-surface-variant uppercase tracking-widest">
                     {viewContext === "business" ? "Business Solution" : "Tech Stack"}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                <p className="text-primary text-sm font-medium mb-6">{service.subtitle}</p>
+                <h3 className="text-3xl font-bold mb-2">{service.title}</h3>
+                <p className="text-primary text-base font-medium mb-6">{service.subtitle}</p>
               </div>
 
               <AnimatePresence initial={false}>
@@ -112,7 +112,7 @@ export default function Services() {
                             <div className="mt-1 w-8 h-8 rounded bg-primary/10 flex items-center justify-center shrink-0">
                               {point.icon}
                             </div>
-                            <p className="text-on-surface-variant text-sm leading-relaxed">
+                            <p className="text-on-surface-variant text-base leading-relaxed">
                               {point.text}
                             </p>
                           </li>

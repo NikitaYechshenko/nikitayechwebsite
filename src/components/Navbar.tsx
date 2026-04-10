@@ -35,7 +35,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center bg-surface-container-low p-1 rounded-full border border-outline-variant/30">
             <button
               onClick={() => setViewContext("business")}
-              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase transition-all ${
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-bold uppercase transition-all ${
                 viewContext === "business"
                   ? "bg-primary text-on-primary-container shadow-lg"
                   : "text-on-surface-variant hover:text-primary"
@@ -46,7 +46,7 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => setViewContext("tech")}
-              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase transition-all ${
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-bold uppercase transition-all ${
                 viewContext === "tech"
                   ? "bg-primary text-on-primary-container shadow-lg"
                   : "text-on-surface-variant hover:text-primary"
@@ -80,7 +80,7 @@ export default function Navbar() {
             className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
           >
             <Globe className="w-5 h-5" />
-            <span className="text-xs font-bold uppercase">{language}</span>
+            <span className="text-sm font-bold uppercase">{language}</span>
           </button>
         </div>
       </div>
