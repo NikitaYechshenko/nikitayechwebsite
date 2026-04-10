@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useRef, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useViewContext } from "../context/ContextContext";
-import { ExternalLink, Clock, X, CheckCircle2, Send, Check } from "lucide-react";
+import { ExternalLink, Clock, X, CheckCircle2, Send, Check, ChevronLeft, ChevronRight } from "lucide-react";
 
 const techProjects = [
   {
@@ -53,16 +53,17 @@ export default function ProjectGallery() {
 
   return (
     <section className="py-32 px-6 md:px-8 bg-background overflow-hidden" id="projects">
-      <div className="max-w-7xl mx-auto mb-12 flex justify-between items-end">
+      <div className="max-w-7xl mx-auto mb-12 flex justify-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
+          className="text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             {viewContext === 'business' ? t.solutions.title : t.solutions.techTitle}
           </h2>
-          <div className="w-12 h-1 bg-primary"></div>
+          <div className="w-12 h-1 bg-primary mx-auto"></div>
         </motion.div>
       </div>
 
@@ -133,61 +134,82 @@ export default function ProjectGallery() {
         </div>
       ) : (
         <>
-          <div 
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8 px-4 -mx-4"
-            style={{ cursor: 'grab' }}
-          >
-            {techProjects.map((project, idx) => (
-              <motion.a
-                key={idx}
-                href={project.link}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="group relative flex-none w-[300px] md:w-[400px] aspect-[4/3] bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden snap-center tech-card"
+          <div className="max-w-7xl mx-auto relative">
+            <div 
+              ref={scrollRef}
+              className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8 px-4"
+              style={{ cursor: 'grab' }}
+            >
+              {techProjects.map((project, idx) => (
+                <motion.a
+                  key={idx}
+                  href={project.link}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group relative flex-none w-[300px] md:w-[400px] aspect-[4/3] bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden snap-center tech-card"
+                >
+                  {/* Image Layer */}
+                  <div className="absolute inset-0">
+                    <img 
+                      src={project.image} 
+                      alt={`${project.title} - ${project.tag} project by Nikita`}
+                      className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
+                      referrerPolicy="no-referrer"
+                      width={400}
+                      height={300}
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
+
+                  {/* Content Layer */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
+                    <div className="flex justify-between items-start">
+                      <span className="px-2 py-1 bg-primary/10 text-primary text-sm font-mono rounded border border-primary/20">
+                        {project.status}
+                      </span>
+                      <ExternalLink className="w-4 h-4 text-on-surface-variant group-hover:text-primary transition-colors" />
+                    </div>
+
+                    <div>
+                      <span className="text-sm font-mono text-primary uppercase tracking-widest mb-2 block">
+                        {project.tag}
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-bold text-on-surface group-hover:translate-x-1 transition-transform">
+                        {project.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute inset-0 bg-primary/5" />
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+
+            <div className="hidden md:flex absolute inset-y-0 left-0 right-0 items-center justify-between pointer-events-none px-1">
+              <button
+                type="button"
+                aria-label="Scroll projects left"
+                onClick={() => scroll('left')}
+                className="pointer-events-auto p-2 rounded-full bg-black/50 hover:bg-black/70 border border-white/10 text-white transition-colors"
               >
-                {/* Image Layer */}
-                <div className="absolute inset-0">
-                  <img 
-                    src={project.image} 
-                    alt={`${project.title} - ${project.tag} project by Nikita`}
-                    className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
-                    referrerPolicy="no-referrer"
-                    width={400}
-                    height={300}
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-                </div>
-
-                {/* Content Layer */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
-                  <div className="flex justify-between items-start">
-                    <span className="px-2 py-1 bg-primary/10 text-primary text-sm font-mono rounded border border-primary/20">
-                      {project.status}
-                    </span>
-                    <ExternalLink className="w-4 h-4 text-on-surface-variant group-hover:text-primary transition-colors" />
-                  </div>
-
-                  <div>
-                    <span className="text-sm font-mono text-primary uppercase tracking-widest mb-2 block">
-                      {project.tag}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-on-surface group-hover:translate-x-1 transition-transform">
-                      {project.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Hover Glow */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute inset-0 bg-primary/5" />
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
-                </div>
-              </motion.a>
-            ))}
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Scroll projects right"
+                onClick={() => scroll('right')}
+                className="pointer-events-auto p-2 rounded-full bg-black/50 hover:bg-black/70 border border-white/10 text-white transition-colors"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Mobile Swipe Hint */}
