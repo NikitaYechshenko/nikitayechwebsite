@@ -24,7 +24,7 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
   const content = viewContext === "business" ? t.hero.business : t.hero.tech;
 
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 md:px-8 pt-24 pb-12 max-w-7xl mx-auto overflow-hidden relative">
+    <section className="min-h-screen min-h-[100svh] flex flex-col justify-center px-6 md:px-8 pt-24 pb-12 max-w-7xl mx-auto overflow-hidden relative">
       <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}

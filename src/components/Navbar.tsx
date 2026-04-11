@@ -26,71 +26,85 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 glass-nav font-display tracking-tight">
       <div className="px-3 sm:px-6 md:px-8 py-4 max-w-7xl mx-auto">
-        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-3 md:gap-6">
-          <div className="text-base sm:text-xl font-bold tracking-tighter text-primary shrink-0 whitespace-nowrap">
+        <div className="md:hidden flex flex-col gap-2">
+          <div className="flex items-center justify-between gap-2">
+            <div className="text-base font-bold tracking-tighter text-primary shrink-0 whitespace-nowrap">
+              NikitaYech
+            </div>
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 text-primary hover:opacity-80 transition-opacity shrink-0"
+            >
+              <Globe className="w-4 h-4" />
+              <span className="text-xs font-bold uppercase">{language}</span>
+            </button>
+          </div>
+
+          <div className="inline-flex items-center bg-surface-container-low p-1 rounded-full border border-outline-variant/30 shadow-lg w-full overflow-hidden">
+            <button
+              onClick={() => setViewContext("business")}
+              className={`flex-1 min-w-0 flex items-center justify-center gap-1 px-2 py-1.5 rounded-full text-[10px] font-bold uppercase transition-all whitespace-nowrap ${
+                viewContext === "business"
+                  ? "bg-primary text-on-primary-container"
+                  : "text-on-surface-variant hover:text-primary"
+              }`}
+            >
+              <Briefcase className="w-3 h-3 shrink-0" />
+              {t.nav.modeBusiness}
+            </button>
+            <button
+              onClick={() => setViewContext("tech")}
+              className={`flex-1 min-w-0 flex items-center justify-center gap-1 px-2 py-1.5 rounded-full text-[10px] font-bold uppercase transition-all whitespace-nowrap ${
+                viewContext === "tech"
+                  ? "bg-primary text-on-primary-container"
+                  : "text-on-surface-variant hover:text-primary"
+              }`}
+            >
+              <Cpu className="w-3 h-3 shrink-0" />
+              {t.nav.modeTech}
+            </button>
+          </div>
+        </div>
+
+        <div className="hidden md:grid grid-cols-[auto_1fr_auto] items-center gap-3 lg:gap-6">
+          <div className="text-xl font-bold tracking-tighter text-primary shrink-0 whitespace-nowrap">
             NikitaYech
           </div>
 
           <div className="flex justify-center min-w-0 px-1">
-            {/* Context Switcher */}
-            <div className="hidden lg:flex items-center bg-surface-container-low p-1 rounded-full border border-outline-variant/30">
+            <div className="inline-flex items-center bg-surface-container-low p-1 rounded-full border border-outline-variant/30 shadow-lg w-full max-w-[380px] overflow-hidden">
               <button
                 onClick={() => setViewContext("business")}
-                className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-bold uppercase transition-all ${
+                className={`flex-1 min-w-0 flex items-center justify-center gap-1.5 px-2 md:px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase transition-all whitespace-nowrap ${
                   viewContext === "business"
                     ? "bg-primary text-on-primary-container shadow-lg"
                     : "text-on-surface-variant hover:text-primary"
                 }`}
               >
-                <Briefcase className="w-3 h-3" />
+                <Briefcase className="w-3 h-3 shrink-0" />
                 {t.nav.modeBusiness}
               </button>
               <button
                 onClick={() => setViewContext("tech")}
-                className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-bold uppercase transition-all ${
+                className={`flex-1 min-w-0 flex items-center justify-center gap-1.5 px-2 md:px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase transition-all whitespace-nowrap ${
                   viewContext === "tech"
                     ? "bg-primary text-on-primary-container shadow-lg"
                     : "text-on-surface-variant hover:text-primary"
                 }`}
               >
-                <Cpu className="w-3 h-3" />
-                {t.nav.modeTech}
-              </button>
-            </div>
-
-            <div className="lg:hidden inline-flex items-center bg-surface-container-low p-1 rounded-full border border-outline-variant/30 shadow-lg w-full max-w-[220px] overflow-hidden">
-              <button
-                onClick={() => setViewContext("business")}
-                className={`flex-1 min-w-0 flex items-center justify-center gap-1 px-1.5 sm:px-2 py-1.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase transition-all whitespace-nowrap ${
-                  viewContext === "business"
-                    ? "bg-primary text-on-primary-container"
-                    : "text-on-surface-variant hover:text-primary"
-                }`}
-              >
-                <Briefcase className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" />
-                {t.nav.modeBusiness}
-              </button>
-              <button 
-                onClick={() => setViewContext("tech")}
-                className={`flex-1 min-w-0 flex items-center justify-center gap-1 px-1.5 sm:px-2 py-1.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase transition-all whitespace-nowrap ${
-                  viewContext === "tech"
-                    ? "bg-primary text-on-primary-container"
-                    : "text-on-surface-variant hover:text-primary"
-                }`}
-              >
-                <Cpu className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" />
+                <Cpu className="w-3 h-3 shrink-0" />
                 {t.nav.modeTech}
               </button>
             </div>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            <button 
+            <button
               onClick={toggleLanguage}
               className="flex items-center gap-1 text-primary hover:opacity-80 transition-opacity"
             >
-              <Globe className="hidden sm:block w-4 h-4" />
-              <span className="text-xs sm:text-sm font-bold uppercase">{language}</span>
+              <Globe className="w-4 h-4" />
+              <span className="text-sm font-bold uppercase">{language}</span>
             </button>
           </div>
         </div>

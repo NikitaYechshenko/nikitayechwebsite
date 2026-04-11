@@ -21,7 +21,7 @@ export default function App() {
   return (
     <LanguageProvider>
       <ContextProvider>
-        <div className="min-h-screen aurora-bg selection:bg-primary/30 selection:text-primary">
+        <div className="min-h-screen min-h-[100svh] aurora-bg selection:bg-primary/30 selection:text-primary">
           <Navbar />
           <main>
             <Hero onContactClick={() => setIsContactOpen(true)} />
