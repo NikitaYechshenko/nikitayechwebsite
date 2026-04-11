@@ -19,11 +19,42 @@ const techProjects = [
   },
 ];
 
+const techProjectCase = {
+  eyebrow: "Telegram Bot project by Nikita",
+  status: "Live",
+  tag: "Telegram Bot",
+  title: "Telegram Bot for alerting",
+  subtitle: "Crypto Alert Bot",
+  summary:
+    "Мощная система мгновенных уведомлений для криптотрейдеров. Бот мониторит рынок в реальном времени и автоматизирует отслеживание цен по 2000+ торговым парам Binance.",
+  features: [
+    "Масштабируемый мониторинг: 2000+ монет на Spot и Futures рынках.",
+    "Мгновенная реакция: фоновые воркеры проверяют API с интервалом в 1 секунду.",
+    "Умные уведомления: моментальная отправка сигналов в Telegram при достижении уровней.",
+    "Мультиязычность: полная поддержка русского и английского интерфейсов.",
+    "Оптимизация ресурсов: Redis-кэш тикеров уменьшает количество API-запросов и ускоряет работу.",
+  ],
+  stack: [
+    { component: "Backend", technology: "Python 3.12 + aiogram 3.x" },
+    { component: "База данных", technology: "PostgreSQL 16" },
+    { component: "Кэширование", technology: "Redis" },
+    { component: "ORM", technology: "SQLAlchemy 2.0" },
+    { component: "Инфраструктура", technology: "Docker & Docker Compose" },
+  ],
+  architecture: [
+    "Handlers & FSM: обработка пользовательского ввода через конечные автоматы.",
+    "Background Workers: сравнение рыночных цен с активными алертами в БД в реальном времени.",
+    "Exchange Layer: изолированные клиенты для работы с API бирж (Binance SDK).",
+    "Database Layer: оптимизированные запросы SQLAlchemy для работы под нагрузкой.",
+  ],
+};
+
 export default function ProjectGallery() {
   const { t } = useLanguage();
   const { viewContext } = useViewContext();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedSolution, setSelectedSolution] = useState<any>(null);
+  const [selectedTechProject, setSelectedTechProject] = useState<any>(null);
 
   const businessSolutions = t.solutions.items;
 
@@ -130,6 +161,10 @@ export default function ProjectGallery() {
                 <motion.a
                   key={idx}
                   href={project.link}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setSelectedTechProject(project);
+                  }}
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -274,6 +309,155 @@ export default function ProjectGallery() {
                     <Send className="w-4 h-4" />
                     {selectedSolution.popup.btn}
                   </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Tech Project Detail Modal */}
+      <AnimatePresence>
+        {selectedTechProject && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedTechProject(null)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-5xl bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/30 shadow-2xl flex flex-col max-h-[90vh]"
+            >
+              <button
+                onClick={() => setSelectedTechProject(null)}
+                className="absolute top-4 right-4 z-20 p-2 bg-black/40 hover:bg-black/60 rounded-full text-white transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="w-full p-6 md:p-8 overflow-y-auto bg-surface-container-low">
+                <div className="mb-8">
+                  <p className="text-sm uppercase tracking-[0.2em] text-primary/80 mb-3">{techProjectCase.eyebrow}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="px-3 py-1 rounded-md bg-primary text-on-primary text-xs font-bold uppercase tracking-widest">
+                      {techProjectCase.status}
+                    </span>
+                    <span className="px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
+                      {techProjectCase.tag}
+                    </span>
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-bold mb-3 leading-tight">{techProjectCase.title}</h3>
+                  <p className="text-xl md:text-2xl font-semibold text-primary mb-3">Crypto Alert Bot</p>
+                  <p className="text-on-surface-variant text-base md:text-lg leading-relaxed max-w-4xl">
+                    {techProjectCase.summary}
+                  </p>
+                </div>
+
+                <a
+                  href="https://t.me/AlertMarketsBot"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-bold rounded-xl hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20 mb-8"
+                >
+                  <Send className="w-4 h-4" />
+                  Запустить бота: @AlertMarketsBot
+                </a>
+
+                <div className="grid md:grid-cols-2 gap-4 mb-10">
+                  <div className="rounded-xl overflow-hidden border border-outline-variant/30 bg-black/20">
+                    <img
+                      src="/alert-create.png"
+                      alt="Создание алерта в Telegram боте"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden border border-outline-variant/30 bg-black/20">
+                    <img
+                      src="/my-alerts.png"
+                      alt="Список алертов в Telegram боте"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-10">
+                  <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-4">Ключевые возможности</h4>
+                  <ul className="space-y-3">
+                    {techProjectCase.features.map((feature, index) => (
+                      <li key={index} className="flex gap-3">
+                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-1" />
+                        <span className="text-on-surface-variant text-base">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mb-10">
+                  <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-4">Технологический стек</h4>
+                  <div className="rounded-xl border border-outline-variant/30 overflow-hidden">
+                    <div className="grid grid-cols-2 bg-primary/10 text-primary font-semibold text-sm uppercase tracking-widest">
+                      <div className="p-3 border-r border-outline-variant/30">Компонент</div>
+                      <div className="p-3">Технология</div>
+                    </div>
+                    {techProjectCase.stack.map((item, index) => (
+                      <div key={item.component} className="grid grid-cols-2 text-sm md:text-base">
+                        <div className={`p-3 border-r border-outline-variant/30 ${index !== techProjectCase.stack.length - 1 ? "border-b border-outline-variant/30" : ""}`}>
+                          <span className="font-semibold">{item.component}</span>
+                        </div>
+                        <div className={`p-3 ${index !== techProjectCase.stack.length - 1 ? "border-b border-outline-variant/30" : ""}`}>
+                          <span className="text-on-surface-variant">{item.technology}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mb-10">
+                  <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-4">Архитектура системы</h4>
+                  <ol className="space-y-3">
+                    {techProjectCase.architecture.map((item, index) => (
+                      <li key={index} className="flex gap-3">
+                        <span className="w-6 h-6 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                          {index + 1}
+                        </span>
+                        <span className="text-on-surface-variant text-base">{item}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                <div className="mb-10">
+                  <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-4">Структура репозитория</h4>
+                  <pre className="p-4 rounded-xl bg-black/30 border border-outline-variant/30 text-sm text-gray-200 overflow-x-auto">
+{`app/
+├── bot/              # Логика бота, клавиатуры и FSM
+├── workers/          # Фоновые задачи по мониторингу цен
+├── exchanges/        # Клиенты API криптобирж
+├── models/           # SQLAlchemy модели и схемы данных
+└── core/             # Конфиг, окружение и Redis`
+                    }
+                  </pre>
+                </div>
+
+                <div className="rounded-xl border border-outline-variant/30 p-5 bg-primary/5">
+                  <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-3">Автор</h4>
+                  <p className="text-lg font-semibold mb-3">Никита Ещенко</p>
+                  <div className="flex flex-wrap gap-4 text-sm">
+                    <a href="https://t.me/nikitayech" target="_blank" rel="noreferrer" className="text-primary hover:underline">
+                      Telegram: @nikitayech
+                    </a>
+                    <a href="https://github.com/NikitaYechshenko" target="_blank" rel="noreferrer" className="text-primary hover:underline">
+                      GitHub: NikitaYechshenko
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
