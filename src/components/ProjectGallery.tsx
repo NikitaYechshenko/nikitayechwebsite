@@ -11,25 +11,11 @@ import { ExternalLink, Clock, X, CheckCircle2, Send, Check, ChevronLeft, Chevron
 
 const techProjects = [
   {
-    title: "Almaty Build Masters",
-    tag: "Landing Page",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    title: "Telegram Bot for alerting",
+    tag: "Telegram Bot",
+    image: "/alert-markets-bot-logo.jpg",
     link: "#",
-    status: "LIVE",
-  },
-  {
-    title: "Loyalty System App",
-    tag: "Mobile Web App",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800",
-    link: "#",
-    status: "STABLE",
-  },
-  {
-    title: "E-commerce Backend",
-    tag: "Backend + DevOps",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800",
-    link: "#",
-    status: "PROD-READY",
+    status: "Live",
   },
 ];
 
