@@ -76,3 +76,12 @@
 .tech-label {
   @apply font-mono text-[10px] uppercase tracking-widest font-bold text-on-surface-variant;
 }
+
+@media (max-width: 767px) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
