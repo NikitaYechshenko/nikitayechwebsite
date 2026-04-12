@@ -124,7 +124,7 @@ export const translations = {
           duration: "24 часа",
           feature: "0$ за хостинг навсегда + базовая SEO",
           oldPrice: "100$",
-          price: "60$",
+          price: "75$",
           image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=1200",
           popup: {
             title: "Идеальный старт для вашего бизнеса в сети.",
@@ -317,7 +317,7 @@ export const translations = {
           duration: "24 hours",
           feature: "$0 hosting forever + basic SEO",
           oldPrice: "100$",
-          price: "60$",
+          price: "75$",
           image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=1200",
           popup: {
             title: "Perfect start for your business online.",
