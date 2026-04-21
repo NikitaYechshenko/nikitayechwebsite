@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useViewContext } from "../context/ContextContext";
-import { CheckCircle2, Terminal as TerminalIcon, Github, Code2, Database, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Terminal as TerminalIcon, Github, Code2, Database, ShieldCheck, Sparkles, ArrowUpRight } from "lucide-react";
 
 export default function Hero({ onContactClick }: { onContactClick: () => void }) {
   const { t } = useLanguage();
@@ -77,6 +77,39 @@ export default function Hero({ onContactClick }: { onContactClick: () => void })
                   </div>
                 ))}
               </div>
+
+              {viewContext === "business" && (
+                <motion.a
+                  href="https://webbuild.kz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                  whileHover={{ y: -2 }}
+                  className="group relative block mb-12 overflow-hidden rounded-2xl border border-primary/40 bg-gradient-to-r from-[#10231d] via-[#153228] to-[#1a4433] p-[1px] shadow-[0_0_40px_rgba(142,228,175,0.18)]"
+                >
+                  <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-2xl bg-[linear-gradient(135deg,rgba(5,11,10,0.96),rgba(13,26,23,0.96))] px-5 py-4">
+                    <div className="absolute -top-10 -left-8 h-20 w-20 rounded-full bg-primary/20 blur-2xl" />
+                    <div className="absolute -bottom-10 -right-8 h-20 w-20 rounded-full bg-secondary/20 blur-2xl" />
+
+                    <div className="relative z-10 flex items-center gap-3">
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                        <Sparkles className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <p className="text-sm md:text-base text-on-surface-variant">{t.hero.businessHubText}</p>
+                        <p className="text-xl md:text-2xl font-bold tracking-tight text-on-surface">https://webbuild.kz/</p>
+                      </div>
+                    </div>
+
+                    <span className="relative z-10 inline-flex items-center gap-2 self-start sm:self-center rounded-xl border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors group-hover:bg-primary/20">
+                      {t.hero.businessHubCta}
+                      <ArrowUpRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                </motion.a>
+              )}
             </motion.div>
           </AnimatePresence>
           

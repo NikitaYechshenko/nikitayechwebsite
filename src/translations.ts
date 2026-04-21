@@ -13,7 +13,7 @@ export const translations = {
       about: "Мой подход",
       contacts: "Контакты",
       status: "System: Online",
-      modeBusiness: "Бизнес",
+      modeBusiness: "WebBuild.kz",
       modeTech: "IT / HR",
     },
     hero: {
@@ -24,6 +24,8 @@ export const translations = {
         bullet2: "0$ за хостинг пожизненно",
         bullet3: "Гарантия запуска и поддержки",
       },
+      businessHubText: "Мой бизнес лежит тут",
+      businessHubCta: "Перейти на webbuild.kz",
       tech: {
         name: "Никита | Backend & DevOps",
         role: "High-load системы и инфраструктура.",
@@ -206,7 +208,7 @@ export const translations = {
       about: "Approach",
       contacts: "Contacts",
       status: "System: Online",
-      modeBusiness: "Business",
+      modeBusiness: "WebBuild.kz",
       modeTech: "IT / HR",
     },
     hero: {
@@ -217,6 +219,8 @@ export const translations = {
         bullet2: "$0 for hosting for life",
         bullet3: "Launch & support guarantee",
       },
+      businessHubText: "My business lives here",
+      businessHubCta: "Open webbuild.kz",
       tech: {
         name: "Nikita | Backend & DevOps",
         role: "High-load systems & infrastructure.",
